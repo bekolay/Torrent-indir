@@ -1,0 +1,8 @@
+﻿@model IEnumerable<torrentloyunVera.BlogKategori>
+
+@foreach (var item in Model)
+{
+<a title="@item.BlogKategoriAdi" href="https://torrenttenidir.com/k/@item.BlogKategoriUrl">
+    <button class="categories-btn">@item.BlogKategoriAdi</button>
+</a>
+}

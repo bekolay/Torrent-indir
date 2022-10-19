@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="torrentleoyun3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BlogKategori">
+    <Key>
+      <PropertyRef Name="BlogKategoriİd" />
+    </Key>
+    <Property Name="BlogKategoriİd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlogKategoriAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogKategoriUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogKategoriTarih" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Bloglars" Relationship="Self.FK_Bloglar_BlogKategori" FromRole="BlogKategori" ToRole="Bloglar" />
+  </EntityType>
+  <EntityType Name="Bloglar">
+    <Key>
+      <PropertyRef Name="Blogİd" />
+    </Key>
+    <Property Name="Blogİd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlogAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogYazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogTarih" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Kullaniciİd" Type="Int32" Nullable="false" />
+    <Property Name="BlogAnahtar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogAktifMi" Type="Boolean" Nullable="false" />
+    <Property Name="BlogResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogGösterimSayisi" Type="Int32" Nullable="false" />
+    <Property Name="BlogKategoriİd" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BlogKategori" Relationship="Self.FK_Bloglar_BlogKategori" FromRole="Bloglar" ToRole="BlogKategori" />
+    <NavigationProperty Name="Kullanici" Relationship="Self.FK_Bloglar_Kullanici" FromRole="Bloglar" ToRole="Kullanici" />
+    <NavigationProperty Name="BlogYorums" Relationship="Self.FK_BlogYorum_Bloglar" FromRole="Bloglar" ToRole="BlogYorum" />
+  </EntityType>
+  <EntityType Name="BlogYorum">
+    <Key>
+      <PropertyRef Name="BlogYorumİd" />
+    </Key>
+    <Property Name="BlogYorumİd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BlogYorumYazi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogYorumAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogTarih" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="BlogEposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BlogAkitf" Type="Boolean" Nullable="false" />
+    <Property Name="Blogİd" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bloglar" Relationship="Self.FK_BlogYorum_Bloglar" FromRole="BlogYorum" ToRole="Bloglar" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="Kullaniciİd" />
+    </Key>
+    <Property Name="Kullaniciİd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciAdSoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciTarih" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="KullaniciSifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciSifreTekrar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciDogum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciEposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciGuvenlik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KullaniciAktif" Type="Boolean" Nullable="false" />
+    <Property Name="KullaniciUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bloglars" Relationship="Self.FK_Bloglar_Kullanici" FromRole="Kullanici" ToRole="Bloglar" />
+    <NavigationProperty Name="webpages_Roles" Relationship="Self.webpages_UsersInRoles" FromRole="Kullanici" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Kullanicis" Relationship="Self.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="Kullanici" />
+  </EntityType>
+  <Association Name="FK_Bloglar_BlogKategori">
+    <End Role="BlogKategori" Type="Self.BlogKategori" Multiplicity="1" />
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogKategori">
+        <PropertyRef Name="BlogKategoriİd" />
+      </Principal>
+      <Dependent Role="Bloglar">
+        <PropertyRef Name="BlogKategoriİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bloglar_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Kullaniciİd" />
+      </Principal>
+      <Dependent Role="Bloglar">
+        <PropertyRef Name="Kullaniciİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogYorum_Bloglar">
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="1" />
+    <End Role="BlogYorum" Type="Self.BlogYorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloglar">
+        <PropertyRef Name="Blogİd" />
+      </Principal>
+      <Dependent Role="BlogYorum">
+        <PropertyRef Name="Blogİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="webpages_UsersInRoles">
+    <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="*" />
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BerkayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BlogKategoris" EntityType="Self.BlogKategori" />
+    <EntitySet Name="Bloglars" EntityType="Self.Bloglar" />
+    <EntitySet Name="BlogYorums" EntityType="Self.BlogYorum" />
+    <EntitySet Name="Kullanicis" EntityType="Self.Kullanici" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" />
+    <AssociationSet Name="FK_Bloglar_BlogKategori" Association="Self.FK_Bloglar_BlogKategori">
+      <End Role="BlogKategori" EntitySet="BlogKategoris" />
+      <End Role="Bloglar" EntitySet="Bloglars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bloglar_Kullanici" Association="Self.FK_Bloglar_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanicis" />
+      <End Role="Bloglar" EntitySet="Bloglars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogYorum_Bloglar" Association="Self.FK_BlogYorum_Bloglar">
+      <End Role="Bloglar" EntitySet="Bloglars" />
+      <End Role="BlogYorum" EntitySet="BlogYorums" />
+    </AssociationSet>
+    <AssociationSet Name="webpages_UsersInRoles" Association="Self.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="Kullanici" EntitySet="Kullanicis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

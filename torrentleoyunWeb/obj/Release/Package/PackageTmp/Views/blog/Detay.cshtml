@@ -1,0 +1,180 @@
+﻿@model torrentloyunVera.Bloglar
+@{
+    ViewBag.Title = Model.BlogAdi;
+}
+
+<meta property="og:title" content="@Html.DisplayFor(model => model.BlogAdi)" />
+<meta property="og:image" content="~/Images/@Html.DisplayFor(model => model.BlogResim)">
+<meta name="description" content="@Html.DisplayFor(model => model.BlogAciklama)" />
+<meta name="keywords" content="Torrent oyun indir,@Html.DisplayFor(model => model.BlogAnahtar)" />
+<meta name="author" content="@Html.DisplayFor(model => model.Kullanici.KullaniciAdi)" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="https://torrenttenidir.com/blog/@Model.BlogUrl/" />
+<meta name="twitter:title" content="@Html.DisplayFor(model => model.BlogAdi)" />
+<meta name="twitter:description" content="@Html.DisplayFor(model => model.BlogAciklama)" />
+<meta name="twitter:image" content="~/Images/@Html.DisplayFor(model => model.BlogResim)" />
+<meta property="og:title" content="@Html.DisplayFor(model => model.BlogAdi)" />
+<meta property="og:url" content="https://torrenttenidir.com/blog/@Model.BlogUrl" />
+<meta property="og:description" content="@Html.DisplayFor(model => model.BlogAciklama)" />
+<meta property="og:image" content="~/Images/@Html.DisplayFor(model => model.BlogResim)" />
+<script id="dsq-count-scr" src="//https-torrenttenidir-com.disqus.com/count.js" async></script>
+
+
+
+<script src="~/Content/jquery-1.10.2.min.js"></script>
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
+<script src="~/Content/sweetalert.min.js"></script>
+
+
+
+<div class="content" id="blog-section">
+    <div class="container">
+        <div class="row">
+            <div class="">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div id="icerik post-content">
+                            <div class="content">
+                                <div id="icerik-yazi" itemscope="" itemtype="http://schema.org/NewsArticle">
+                                    <meta itemprop="mainEntityOfPage" content="https://torrenttenidir.com/blog/@Model.BlogUrl">
+                                    <meta itemprop="isFamilyFriendly" content="TRUE">
+                                    <meta itemprop="publishingPrinciples" content="https://torrenttenidir.com/Home/Telif">
+                                    <meta itemprop="dateModified" content="@Model.BlogTarih.ToString("YYYY-MM-DDThh:mm:ssTZD")">
+                                    <meta itemprop="dateCreated" content="@Model.BlogTarih.ToString("YYYY-MM-DDThh:mm:ssTZD")">
+                                    <meta itemprop="articleSection" content="@Model.BlogKategori.BlogKategoriAdi">
+                                    <meta itemprop="inLanguage" content="tr-TR">
+                                    <meta itemprop="genre" content="news" name="medium">
+                                    <div id="crumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                                        <strong>Buradasınız:</strong>
+                                        <a title="Torrentten İndir" href="https://torrenttenidir.com/ ">Torrentten İndir</a> /
+                                        <a title="@Model.BlogKategori.BlogKategoriAdi" href="https://torrenttenidir.com/K/@Model.BlogKategori.BlogKategoriUrl" itemprop="keywords" rel="category tag">
+                                            @Model.BlogKategori.BlogKategoriAdi
+                                    </a> /
+                                    <span class="current" itemprop="itemListElement">
+                                        <a itemprop="title" title="@Model.BlogAdi" href="https://torrenttenidir.com/blog/@Model.BlogUrl">@Model.BlogAdi</a>
+                                    </span>
+                                </div>
+                                <div class="icerik-baslik">
+                                    <h1 itemprop="headline" class="entry-title"><a href="https://orrenttenidir.comblog/@Model.BlogUrl" title="@Model.BlogAdi">@Model.BlogAdi</a></h1>
+                                    <div hidden class="post-author" itemscope itemtype="http://schema.org/Person" itemprop="author">@Html.DisplayFor(model => model.Kullanici.KullaniciAdi)</div>
+                                    <div hidden class="post-date" datetime="@Model.BlogTarih.ToString("YYYY-MM-DDThh:mm:ss")" itemprop="dateCreated">@Model.BlogTarih.ToString("dd.MM.yyyy")</div>
+                                </div>
+                                <div class="icerik-y-uzun">
+                                    <p>&nbsp;</p>
+                                    <p>&nbsp;</p>
+                                    <p>&nbsp;</p>
+                                    <a title="@Model.BlogAdi" href="https://torrenttenidir.com/blog/@Model.BlogUrl">
+                                        <img alt="@Model.BlogAdi" title="@Model.BlogAdi" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject" style="width: 700px; height: 400px;" class="img-fluid rounded img-responsive" src="~/Images/@Model.BlogResim" width="929" height="344" srcset="~/Images/@Model.BlogResim" sizes="(max-width: 929px) 100vw, 929px">
+                                    </a>
+                                    <hr>
+
+
+                                    <br />
+                                    <div itemprop="articleBody">
+                                        @Html.Raw(Model.BlogYazi)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Comments -->
+
+                <section id="comments" class="comments">
+                    <h4 class="title">Yorumlar</h4>
+
+                    @*@foreach (var asd in ViewBag.Yorumlar)
+                        {
+                            <div class="container mt-5 mb-5 ar">
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-3 arkaplanrenk">
+                                        <ul class="timeline">
+                                            <li>
+                                                <a target="_blank">@asd.BlogYorumAdi</a>
+                                                <a class="float-right">@asd.BlogTarih.ToString("dd.MM.yyyy:hh.mm")</a>
+                                                <p>@asd.BlogYorumYazi</p>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        }*@
+                    <div class="container col-lg-8">
+                        <div class="row">
+                            <div id="disqus_thread"></div>
+                            <script>
+
+                                /**
+                                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                                /*
+                                var disqus_config = function () {
+                                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                };
+                                */
+                                (function () { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = 'https://https-torrenttenidir-com.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+                        </div>
+                    </div>
+
+                    <!--/ Comment Form -->
+                </section>
+                <!--/ Comments -->
+            </div>
+        </div>
+
+
+        <!--           // RECENT POST===========-->
+        <div class="col-lg-4">
+            <div class="widget-sidebar">
+                <div class="widget-sidebar widget-search">
+                    <div class="widget-title"><span>Site İçi Arama</span></div>
+
+                    <form action="/Home/Ara" method="get" class="form-search">
+                        <input type="text" name="kelime" class="form-control" placeholder="Aranacak kelime" />
+                        <button class="btn btn-default btn-sm pull-right baslik2">Ara</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="widget-sidebar">
+                <h2 class="title-widget-sidebar">En Çok Gösterilenler</h2>
+                <div class="content-widget-sidebar">
+                    <ul>
+                        @Html.Partial("_Gosterim", torrentleoyunWeb.Models.Data.Gosterim)
+
+
+                    </ul>
+                </div>
+            </div>
+
+            <!--=====================
+                 CATEGORIES
+            ======================-->
+            <div class="widget-sidebar">
+                <h2 class="title-widget-sidebar">Kategoriler</h2>
+                @Html.Partial("_KategoriYan", torrentleoyunWeb.Models.Data.Kategoriler)
+            </div>
+
+            <!--=====================
+                   NEWSLATTER
+            ======================-->
+
+
+        </div>
+    </div>
+</div>
+
+</div>

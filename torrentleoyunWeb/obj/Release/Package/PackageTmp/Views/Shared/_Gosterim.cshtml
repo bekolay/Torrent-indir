@@ -1,0 +1,16 @@
+﻿@model IEnumerable<torrentloyunVera.Bloglar>
+
+@foreach (var item in Model)
+{
+    <li class="recent-post">
+        <div class="post-img">
+            <a href="https://torrenttenidir.com/blog/@item.BlogUrl">
+                <img alt="@item.BlogAdi" title="@item.BlogAdi" src="~/Images/@item.BlogResim" class="img-responsive">
+            </a>
+        </div>
+        <a href="https://torrenttenidir.com/blog/@item.BlogUrl" title="@item.BlogAdi"><h5>@item.BlogAdi</h5></a>
+        <p><small><i class="fa fa-calendar" data-original-title="@item.BlogTarih.ToString("dd.MM.yyyy:hh.mm")"></i> @item.BlogTarih.ToString("dd.MM.yyyy:hh.mm")</small></p>
+    </li>
+    <hr />
+}
+

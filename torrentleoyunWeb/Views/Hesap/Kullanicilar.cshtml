@@ -1,0 +1,91 @@
+﻿@model IEnumerable<torrentloyunVera.Kullanici>
+@{
+    ViewBag.Title = "Kullanicilar";
+}
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Admin"))
+{
+
+    <section id="blog-section">
+        <div class="content-wrapper">
+            <div class="content-dimmer"></div>
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Aktif Olan Kullanıcılar</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_1" class="table table-hover display">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı Adı</th>
+                            <th>Adı Soyadı</th>
+                            <th>Tarih</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.KullaniciAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.KullaniciAdSoyad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.KullaniciTarih)</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Kullaniciİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Aktif Olmayan Kullanıcılar</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_2" class="table table-hover display  pb-30">
+                    <thead>
+                        <tr>
+                            <th>Kullanıcı Adı</th>
+                            <th>Adı Soyadı</th>
+                            <th>Tarih</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var asd in ViewBag.Aktifolmayan)
+                        {
+                            <tr>
+                                <td>@asd.KullaniciAdi</td>
+                                <td>@asd.KullaniciAdSoyad</td>
+                                <td>@asd.KullaniciTarih</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "Edit", new { id = asd.Kullaniciİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+}
+
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Kullanici"))
+{
+    <h1>Yetkisiz alana girmeye çalışıyorsun hemen menüden kendi alanına dön !</h1>
+}

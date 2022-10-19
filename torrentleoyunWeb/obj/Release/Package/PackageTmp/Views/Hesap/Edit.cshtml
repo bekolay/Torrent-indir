@@ -1,0 +1,130 @@
+﻿@model torrentloyunVera.Kullanici
+@{
+    ViewBag.Title = "Kullanıcı Düzenle";
+}
+
+<section id="blog-section">
+    <div class="content-wrapper">
+        <div class="content-dimmer"></div>
+        <header class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Hesap Bilgi Düzenle</h1>
+                        <span class="help-block">Şifrenizi değiştirmek için girmediyseniz diğer bilgilerinizi değiştirmek için girdiyseniz kayıt tuşuna basınca şifreniz değişecektir bu yüzden şifrenizi yazmayı unutmayınız.</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Kullaniciİd)
+            @Html.HiddenFor(model => model.KullaniciGuvenlik)
+            @Html.HiddenFor(model => model.KullaniciUrl)
+            @Html.HiddenFor(model => model.KullaniciAdi)
+            @Html.HiddenFor(model => model.KullaniciDogum)
+
+
+                <div class="content-wrapper">
+                    <div class="panel-wrapper collapse in">
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div>
+                                    <div class="form-wrap">
+                                        <div class="form-body">
+                                            <div class="row">
+                                                <div class="">
+                                                    <div class="form-group">
+                                                        <label class="control-label text-danger">@Html.ValidationSummary(true)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Row -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">KULLANICI İSİM SOYAD</label>
+                                                            @Html.EditorFor(model => model.KullaniciAdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="">
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">KULLANICI Eposta</label>
+                                                            @Html.EditorFor(model => model.KullaniciEposta, new { htmlAttributes = new { @class = "form-control" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->
+                                        </div>
+                                        <!-- /Row -->
+                                        <!-- /Row -->
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">ŞİFRE</label>
+                                                    <div class="">
+                                                        @Html.EditorFor(model => model.KullaniciSifre, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                        @Html.ValidationMessageFor(model => model.KullaniciSifre, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">ŞİFRE TEKRAR</label>
+                                                    <div class="">
+                                                        <div class="">
+                                                            @*<input value="Amsterdam,Washington,Sydney" data-role="tagsinput" DISABLED>*@
+                                                            @Html.EditorFor(model => model.KullaniciSifreTekrar, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                                                            @Html.ValidationMessageFor(model => model.KullaniciSifreTekrar, null, new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="exampleInputName_1">Kullanıcı Aktif mi @Html.CheckBoxFor(model => model.KullaniciAktif, new { @class = "form-control", type = "checkbox", id = "remember_me_1" })</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /Row -->
+                                    </div>
+                                    <div class="form-actions mt-10">
+                                        <button type="submit" class="btn btn-success  mr-10">Kayıt</button>
+                                        <a>
+                                            @Html.ActionLink("Geri Gel", "Kullanicilar")
+                                        </a>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        }
+
+
+
+    </div>
+</section>
+
+

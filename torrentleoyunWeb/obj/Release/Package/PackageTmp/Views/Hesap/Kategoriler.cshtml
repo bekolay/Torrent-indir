@@ -1,0 +1,60 @@
+﻿@model IEnumerable<torrentloyunVera.BlogKategori>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Admin"))
+{
+
+    <section id="blog-section">
+
+        <div class="content-wrapper">
+
+            <div class="content-dimmer"></div>
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Kategoriler</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h6 class="panel-title txt-dark">
+
+                            <a href="~/Hesap/BlogKategoriEkle"><button type="button" class="btn btn-outline-primary">Kategori Oluştur</button></a>
+                        </h6>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_1" class="table table-hover display">
+                    <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Tarih</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.BlogKategoriAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BlogKategoriTarih)</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "BlogKategoriDüzenle", new { id = item.BlogKategoriİd })|
+                                    @Html.ActionLink("Sil", "BlogKategoriSil", new { id = item.BlogKategoriİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+}

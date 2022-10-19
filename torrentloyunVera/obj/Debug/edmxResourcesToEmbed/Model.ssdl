@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="torrentleoyun3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BlogKategori">
+    <Key>
+      <PropertyRef Name="BlogKategoriİd" />
+    </Key>
+    <Property Name="BlogKategoriİd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogKategoriAdi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogKategoriUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogKategoriTarih" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bloglar">
+    <Key>
+      <PropertyRef Name="Blogİd" />
+    </Key>
+    <Property Name="Blogİd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogAdi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogAciklama" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogYazi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogTarih" Type="datetime" Nullable="false" />
+    <Property Name="Kullaniciİd" Type="int" Nullable="false" />
+    <Property Name="BlogAnahtar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogAktifMi" Type="bit" Nullable="false" />
+    <Property Name="BlogResim" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogGösterimSayisi" Type="int" Nullable="false" />
+    <Property Name="BlogKategoriİd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BlogYorum">
+    <Key>
+      <PropertyRef Name="BlogYorumİd" />
+    </Key>
+    <Property Name="BlogYorumİd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogYorumYazi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogYorumAdi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogTarih" Type="datetime" Nullable="false" />
+    <Property Name="BlogEposta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BlogAkitf" Type="bit" Nullable="false" />
+    <Property Name="Blogİd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="Kullaniciİd" />
+    </Key>
+    <Property Name="Kullaniciİd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciAdSoyad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciTarih" Type="datetime" Nullable="false" />
+    <Property Name="KullaniciSifre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciSifreTekrar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciDogum" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciEposta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciGuvenlik" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KullaniciAktif" Type="bit" Nullable="false" />
+    <Property Name="KullaniciUrl" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bloglar_BlogKategori">
+    <End Role="BlogKategori" Type="Self.BlogKategori" Multiplicity="1" />
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogKategori">
+        <PropertyRef Name="BlogKategoriİd" />
+      </Principal>
+      <Dependent Role="Bloglar">
+        <PropertyRef Name="BlogKategoriİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bloglar_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Kullaniciİd" />
+      </Principal>
+      <Dependent Role="Bloglar">
+        <PropertyRef Name="Kullaniciİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogYorum_Bloglar">
+    <End Role="Bloglar" Type="Self.Bloglar" Multiplicity="1" />
+    <End Role="BlogYorum" Type="Self.BlogYorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloglar">
+        <PropertyRef Name="Blogİd" />
+      </Principal>
+      <Dependent Role="BlogYorum">
+        <PropertyRef Name="Blogİd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Kullaniciİd" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="torrentleoyun3ModelStoreContainer">
+    <EntitySet Name="BlogKategori" EntityType="Self.BlogKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bloglar" EntityType="Self.Bloglar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogYorum" EntityType="Self.BlogYorum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bloglar_BlogKategori" Association="Self.FK_Bloglar_BlogKategori">
+      <End Role="BlogKategori" EntitySet="BlogKategori" />
+      <End Role="Bloglar" EntitySet="Bloglar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bloglar_Kullanici" Association="Self.FK_Bloglar_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Bloglar" EntitySet="Bloglar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogYorum_Bloglar" Association="Self.FK_BlogYorum_Bloglar">
+      <End Role="Bloglar" EntitySet="Bloglar" />
+      <End Role="BlogYorum" EntitySet="BlogYorum" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="Self.fk_UserId">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

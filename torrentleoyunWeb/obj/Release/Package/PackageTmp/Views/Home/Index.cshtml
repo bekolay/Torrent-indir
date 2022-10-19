@@ -1,0 +1,99 @@
+﻿@model IPagedList<torrentloyunVera.Bloglar>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<meta name="Description" CONTENT="Torrent oyun dizi film indirmek için en doğru adres. torrenttenidir.com adresine girip istediğinizi indirin.">
+<meta name="keywords" content="Torrent oyun indir,filmi indir,program indir,torrent,indir,indirme sitesi,oyunu indir,türkçe dublaj indir,torrent indir,720p indir,1080p filmi indir,oyun indirme sitesi,torrent oyunlar,Dizi Film indir">
+<section id="blog-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12" style="margin-top: 20px !important;">
+                                <div class="arkaplanrenk">
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <article class="arkaplanrenk">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-4">
+                                                    <figure>
+                                                        <a href="~/blog/@item.BlogUrl" alt="@item.BlogAdi" title="@item.BlogAdi"><img alt="@item.BlogAdi" title="@item.BlogAdi" style="width: 220px; height: 200px;" src="~/Images/@item.BlogResim" itemprop="image"></a>
+                                                    </figure>
+                                                </div>
+                                                <div class="col-sm-6 col-md-8">
+                                                    <a href="~/blog/@item.BlogUrl" title="@item.BlogAdi"><h4 itemprop="name" class="baslik">@item.BlogAdi</h4></a>
+
+                                                    <section>
+                                                        <i class="glyphicon glyphicon-user" itemprop="author">  @item.Kullanici.KullaniciAdi</i>
+                                                        <i class="glyphicon glyphicon-calendar" itemprop="dateCreated">  @item.BlogTarih.ToString("dd.MM.yyyy") </i>
+                                                        <i class="glyphicon glyphicon-eye-open">  @item.BlogGösterimSayisi</i>
+                                                        <hr />
+                                                        <a href="~/blog/@item.BlogUrl" class="btn btn-default btn-sm pull-right baslik2" itemprop="url">Devamını Oku </a>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <ul class="pagination">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--           // RECENT POST===========-->
+            <div class="col-lg-4">
+                <div class="widget-sidebar">
+                    <div class="widget-sidebar widget-search">
+                        <div class="widget-title"><span>Site İçi Arama</span></div>
+
+                        <form action="/Home/Ara" method="get" class="form-search">
+                            <input type="text" name="kelime" class="form-control" placeholder="Aranacak kelime" />
+                            <button class="btn btn-default btn-sm pull-right baslik2">Ara</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="widget-sidebar">
+                    <h2 class="title-widget-sidebar">En Çok Gösterilenler</h2>
+                    <div class="content-widget-sidebar">
+                        <ul>
+                            @Html.Partial("_Gosterim", torrentleoyunWeb.Models.Data.Gosterim)
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!--=====================
+                     CATEGORIES
+                ======================-->
+                <div class="widget-sidebar">
+                    <h2 class="title-widget-sidebar">Kategoriler</h2>
+                    @Html.Partial("_KategoriYan", torrentleoyunWeb.Models.Data.Kategoriler)
+                </div>
+
+                <!--=====================
+                       NEWSLATTER
+                ======================-->
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+

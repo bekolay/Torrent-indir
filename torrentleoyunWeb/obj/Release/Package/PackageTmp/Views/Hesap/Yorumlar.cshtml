@@ -1,0 +1,88 @@
+﻿@model IEnumerable<torrentloyunVera.BlogYorum>
+@{
+    ViewBag.Title = "Yorumlar";
+}
+
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Admin"))
+{
+
+    <section id="blog-section">
+
+        <div class="content-wrapper">
+
+            <div class="content-dimmer"></div>
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Yorumlar</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_1" class="table table-hover display">
+                    <thead>
+                        <tr>
+                            <th>Yorum Adı</th>
+                            <th>Tarih</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.BlogYorumAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BlogTarih)</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "YorumEdit", new { id = item.BlogYorumİd }) |
+                                    @Html.ActionLink("Sil", "YorumSil", new { id = item.BlogYorumİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Aktif Olmayan Yorumlar</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_2" class="table table-hover display  pb-30">
+                    <thead>
+                        <tr>
+                            <th>Yorum Adı</th>
+                            <th>Tarih</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var asd in ViewBag.Aktifblog)
+                        {
+                            <tr>
+                                <td>@asd.BlogYorumAdi</td>
+                                <td>@asd.BlogYorumİd</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "YorumEdit", new { id = asd.BlogYorumİd }) |
+                                    @Html.ActionLink("Sil", "YorumSil", new { id = asd.BlogYorumİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+}
+
+

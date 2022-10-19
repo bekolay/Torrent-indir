@@ -1,0 +1,95 @@
+﻿@model torrentloyunVera.BlogKategori
+@{
+    ViewBag.Title = "Blog Kategori Ekle";
+}
+
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Admin"))
+{
+
+
+    using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <section id="blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="">
+                                <div class="login-form mx-auto d-block w-100">
+                                    <div class="page-header text-center">
+                                        <h1>Kategori Ekle</h1>
+                                    </div>
+                                    <div class="form-validate">
+                                        <div class="form-group">
+                                            <div class="control-label text-center">
+                                                <label id="username-lbl" for="username" class="required invalid">Kategori Adı<span class="star"> *</span></label>
+                                            </div>
+                                            <div class="controls">
+                                                @Html.EditorFor(model => model.BlogKategoriAdi, new { htmlAttributes = new { @class = "form-control", size = "25", @required = "required", autofocus = "", @type = "text" } })
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="form-group d-flex justify-content-start">
+                                                <div class="controls">
+                                                    <button type="submit" class="btn btn-info btn-rounded">Ekle</button>
+                                                    <a href="~/Hesap/Kategoriler"><button type="button" class="btn btn-outline-primary">Geri Gel</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--           // RECENT POST===========-->
+                    <div class="col-lg-4">
+                        <div class="widget-sidebar">
+                            <div class="widget-sidebar widget-search">
+                                <div class="widget-title"><span>Site İçi Arama</span></div>
+
+                                <form action="/Home/Ara" method="get" class="form-search">
+                                    <input type="text" name="kelime" class="form-control" placeholder="Aranacak kelime" />
+                                    <button class="btn btn-default btn-sm pull-right baslik2">Ara</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="widget-sidebar">
+                            <h2 class="title-widget-sidebar">En İyiler</h2>
+                            <div class="content-widget-sidebar">
+                                <ul>
+                                    @Html.Partial("_Gosterim", torrentleoyunWeb.Models.Data.Gosterim)
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--=====================
+         CATEGORIES
+    ======================-->
+                        <div class="widget-sidebar">
+                            <h2 class="title-widget-sidebar">Kategoriler</h2>
+                            @Html.Partial("_KategoriYan", torrentleoyunWeb.Models.Data.Kategoriler)
+                        </div>
+
+                        <!--=====================
+           NEWSLATTER
+    ======================-->
+
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    }
+}
+

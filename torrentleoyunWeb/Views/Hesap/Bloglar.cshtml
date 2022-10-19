@@ -1,0 +1,100 @@
+﻿@model IEnumerable<torrentloyunVera.Bloglar>
+@{
+    ViewBag.Title = "Bloglar";
+}
+
+@if (Request.IsAuthenticated && HttpContext.Current.User.IsInRole
+("Admin"))
+{
+
+    <section id="blog-section">
+
+        <div class="content-wrapper">
+
+            <div class="content-dimmer"></div>
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Aktif Olan Bloglar</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h6 class="panel-title txt-dark">
+
+                            <a href="~/Hesap/BlogEkle"><button type="button" class="btn btn-outline-primary">Blog Oluştur</button></a>
+                        </h6>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_1" class="table table-hover display">
+                    <thead>
+                        <tr>
+                            <th>Blog Adı</th>
+                            <th>Tarih</th>
+                            <th>Gösterim Sayısı</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.BlogAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BlogTarih)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BlogGösterimSayisi)</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "BlokEdit", new { id = item.Blogİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <header class="page-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h1 class="page-header-heading"><span class="typcn typcn-th-small-outline page-header-heading-icon"></span>Aktif Olmayan Bloglar</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="container" style="background: #ffffff;border-top-width: 50px;padding-top: 50px;padding-bottom: 50px;">
+                <table id="datable_2" class="table table-hover display  pb-30">
+                    <thead>
+                        <tr>
+                            <th>Blog Adı</th>
+                            <th>Tarih</th>
+                            <th>Gösterim Sayısı</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var asd in ViewBag.Aktifblog)
+                        {
+                            <tr>
+                                <td>@asd.BlogAdi</td>
+                                <td>@asd.BlogTarih</td>
+                                <td>@asd.BlogGösterimSayisi</td>
+                                <td>
+                                    @Html.ActionLink("Düzenle", "BlokEdit", new { id = asd.Blogİd })
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+}
+
+
+
