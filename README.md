@@ -1,2 +1,1 @@
-# Torrent İndir
- torrent oyun indir
+# Blog çalışması c#
