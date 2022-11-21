@@ -1,3 +1,3 @@
-# Blog  c#
-# Seo yapıldı
-# Açılış hızı iyi
+ Blog  c#
+ Seo yapıldı
+ Açılış hızı iyi
